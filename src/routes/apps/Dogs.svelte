@@ -33,7 +33,7 @@
     .bg {
       position: absolute;
       width: 100vw;
-      height: 100vh;
+      height: 115vh;
       left: 0;
       top: 0;
       background-size: cover;
