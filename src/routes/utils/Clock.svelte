@@ -14,15 +14,15 @@
         return strTime;
     }
     
+    export let fontSize;
 </script>
 
-<div class="time">
+<div class="time" style='font-size: {fontSize}'>
     {time}
 </div>
 
 <style>
     .time {
-        font-size: 2.6rem;
         font-weight: bold;
         display: flex;
         justify-content: center;

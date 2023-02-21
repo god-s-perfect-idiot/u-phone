@@ -25,7 +25,7 @@
 
 {#if context == "home"}
     <div class='home'>
-        <Clock/>
+        <Clock fontSize='2.6rem'/>
     </div>
 
     <div class="applist">
