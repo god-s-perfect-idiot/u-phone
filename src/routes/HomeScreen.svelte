@@ -8,6 +8,7 @@
     import FaRegLaughSquint from 'svelte-icons/fa/FaRegLaughSquint.svelte'
     import FaSadTear from 'svelte-icons/fa/FaSadTear.svelte'
     import FaJournalWhills from 'svelte-icons/fa/FaJournalWhills.svelte'
+    import FaBraille from 'svelte-icons/fa/FaBraille.svelte'
     import App from './utils/App.svelte';
     import Journal from './apps/Journal.svelte';
     import Quotes from './apps/Quotes.svelte';
@@ -16,6 +17,7 @@
     import Jokes from './apps/Jokes.svelte';
     import Puns from './apps/Puns.svelte';
     import Breakout from './apps/Breakout.svelte';
+    import Stars from './apps/Stars.svelte';
     let context = "home";
 
     function changeContext(newContext) {
@@ -54,6 +56,11 @@
                 <FaJournalWhills/>
             </App>
         </div>
+        <div on:click={() => changeContext('stars')} on:keydown={console.log('idk')}>
+            <App appName="Make a Wish" color="#3949ab">
+                <FaBraille/>
+            </App>
+        </div>
     </div>
 {:else if context == "quote"}
     <div class='app-area'>
@@ -90,6 +97,13 @@
     <div class='nav' on:click={() => changeContext('home')} on:keydown={console.log('idk')}>
         <Navbar/>
     </div>
+{:else if context == "stars"}
+        <div class='app-area'>
+            <Stars/>
+        </div>
+        <div class='nav' on:click={() => changeContext('home')} on:keydown={console.log('idk')}>
+            <Navbar/>
+        </div>
 {/if}
 
 <style>
