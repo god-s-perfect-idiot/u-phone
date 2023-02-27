@@ -10,6 +10,7 @@
     import FaBraille from 'svelte-icons/fa/FaBraille.svelte'
     import FaDog from 'svelte-icons/fa/FaDog.svelte'
     import FaPenFancy from 'svelte-icons/fa/FaPenFancy.svelte'
+    import FaBookReader from 'svelte-icons/fa/FaBookReader.svelte'
 
     import Clock from './utils/Clock.svelte';
     import App from './utils/App.svelte';
@@ -24,6 +25,7 @@
     import Stars from './apps/Stars.svelte';
     import Dogs from './apps/Dogs.svelte';
     import Poems from './apps/Poems.svelte';
+    import Books from './apps/Books.svelte';
     let context = "home";
     let greeting;
 
@@ -86,6 +88,11 @@
                 <FaPenFancy/>
             </App>
         </div>
+        <div on:click={() => changeContext('books')} on:keydown={console.log('idk')}>
+            <App appName="A Good Book" color="#bf360c">
+                <FaBookReader/>
+            </App>
+        </div>
     </div>
 {:else if context == "quote"}
     <div class='app-area'>
@@ -139,6 +146,13 @@
 {:else if context == "poems"}
     <div class='app-area'>
         <Poems/>
+    </div>
+    <div class='nav' on:click={() => changeContext('home')} on:keydown={console.log('idk')}>
+        <Navbar/>
+    </div>
+{:else if context == "books"}
+    <div class='app-area'>
+        <Books/>
     </div>
     <div class='nav' on:click={() => changeContext('home')} on:keydown={console.log('idk')}>
         <Navbar/>

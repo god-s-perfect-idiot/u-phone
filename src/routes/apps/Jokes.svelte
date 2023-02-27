@@ -6,7 +6,11 @@
     let promise;
 
     const getQuote = async () => {
-        const res = await fetch('https://v2.jokeapi.dev/joke/Miscellaneous?type=single');
+        const res = await fetch('https://icanhazdadjoke.com/', {
+            headers: {
+                Accept: "application/json"
+            }
+        });
         const Quote = await res.json();
         quote = Quote.joke;
     }
