@@ -11,6 +11,8 @@
     import FaDog from 'svelte-icons/fa/FaDog.svelte'
     import FaPenFancy from 'svelte-icons/fa/FaPenFancy.svelte'
     import FaBookReader from 'svelte-icons/fa/FaBookReader.svelte'
+    import MdChatBubble from 'svelte-icons/md/MdChatBubble.svelte'
+    import MdTimelapse from 'svelte-icons/md/MdTimelapse.svelte'
 
     import Clock from './utils/Clock.svelte';
     import App from './utils/App.svelte';
@@ -26,6 +28,9 @@
     import Dogs from './apps/Dogs.svelte';
     import Poems from './apps/Poems.svelte';
     import Books from './apps/Books.svelte';
+    import Chat from './apps/Chat.svelte';
+    import Eleven from './apps/Eleven.svelte';
+    
     let context = "home";
     let greeting;
 
@@ -37,6 +42,87 @@
         greeting = greetings[Math.floor(Math.random() * greetings.length)]
         context = newContext;
     }
+
+    const appList = [
+        {
+            context: 'quote',
+            name: 'A Quote a day',
+            color: '#e53935',
+            icon: FaQuoteRight,
+            app: Quotes
+        },
+        {
+            context: 'gallery',
+            name: 'Snaps from the past',
+            color: '#1e88e5',
+            icon: MdPhotoAlbum,
+            app: Gallery
+        },
+        {
+            context: 'jokes',
+            name: 'Have a Laugh',
+            color: '#00897b',
+            icon: FaRegLaughSquint,
+            app: Jokes
+        },
+        {
+            context: 'puns',
+            name: 'Tearable Puns',
+            color: '#f4511e',
+            icon: FaSadTear,
+            app: Puns
+        },
+        {
+            context: 'journal',
+            name: 'A Penny for your Thoughts',
+            color: '#01579b',
+            icon: FaJournalWhills,
+            app: Journal
+        },
+        {
+            context: 'stars',
+            name: 'Make a Wish',
+            color: '#3949ab',
+            icon: FaBraille,
+            app: Stars
+        },
+        {
+            context: 'dogs',
+            name: 'Good Pupper',
+            color: '#c2185b',
+            icon: FaDog,
+            app: Dogs
+        },
+        {
+            context: 'poems',
+            name: 'Mightier Pen',
+            color: '#006064',
+            icon: FaPenFancy,
+            app: Poems
+        },
+        {
+            context: 'books',
+            name: 'A Good Book',
+            color: '#bf360c',
+            icon: FaBookReader,
+            app: Books
+        },
+        {
+            context: 'chat',
+            name: 'Chat with GPT',
+            color: '#283593',
+            icon: MdChatBubble,
+            app: Chat
+        },
+        {
+            context: 'eleven',
+            name: 'Time to Eleven',
+            color: '#00796B',
+            icon: MdTimelapse,
+            app: Eleven
+        }
+    ]
+    
 </script>
 
 {#if context == "home"}
@@ -48,117 +134,25 @@
     </div>
 
     <div class="applist">
-        <div on:click={() => changeContext('quote')} on:keydown={console.log('idk')}>
-            <App appName="A Quote a day" color="#e53935">
-                <FaQuoteRight/>
-            </App>
-        </div>
-        <div on:click={() => changeContext('gallery')} on:keydown={console.log('idk')}>
-            <App appName="Snaps from the past" color="#1e88e5">
-                <MdPhotoAlbum/>
-            </App>
-        </div>
-        <div on:click={() => changeContext('jokes')} on:keydown={console.log('idk')}>
-            <App appName="Have a Laugh" color="#00897b">
-                <FaRegLaughSquint/>
-            </App>
-        </div>
-        <div on:click={() => changeContext('puns')} on:keydown={console.log('idk')}>
-            <App appName="Tearable Puns" color="#f4511e">
-                <FaSadTear/>
-            </App>
-        </div>
-        <div on:click={() => changeContext('journal')} on:keydown={console.log('idk')}>
-            <App appName="A Penny for your Thoughts" color="#01579b">
-                <FaJournalWhills/>
-            </App>
-        </div>
-        <div on:click={() => changeContext('stars')} on:keydown={console.log('idk')}>
-            <App appName="Make a Wish" color="#3949ab">
-                <FaBraille/>
-            </App>
-        </div>
-        <div on:click={() => changeContext('dogs')} on:keydown={console.log('idk')}>
-            <App appName="Good Pupper" color="#c2185b">
-                <FaDog/>
-            </App>
-        </div>
-        <div on:click={() => changeContext('poems')} on:keydown={console.log('idk')}>
-            <App appName="Mightier Pen" color="#006064">
-                <FaPenFancy/>
-            </App>
-        </div>
-        <div on:click={() => changeContext('books')} on:keydown={console.log('idk')}>
-            <App appName="A Good Book" color="#bf360c">
-                <FaBookReader/>
-            </App>
-        </div>
-    </div>
-{:else if context == "quote"}
-    <div class='app-area'>
-        <Quotes/>
-    </div>
-    <div class='nav' on:click={() => changeContext('home')} on:keydown={console.log('idk')}>
-        <Navbar/>
-    </div>
-{:else if context == "gallery"}
-    <div class='app-area'>
-        <Gallery/>
-    </div>
-    <div class='nav' on:click={() => changeContext('home')} on:keydown={console.log('idk')}>
-        <Navbar/>
-    </div>
-{:else if context == "jokes"}
-    <div class='app-area'>
-        <Jokes/>
-    </div>
-    <div class='nav' on:click={() => changeContext('home')} on:keydown={console.log('idk')}>
-        <Navbar/>
-    </div>
-{:else if context == "puns"}
-    <div class='app-area'>
-        <Puns/>
-    </div>
-    <div class='nav' on:click={() => changeContext('home')} on:keydown={console.log('idk')}>
-        <Navbar/>
-    </div>
-{:else if context == "journal"}
-    <div class='app-area'>
-        <Journal/>
-    </div>
-    <div class='nav' on:click={() => changeContext('home')} on:keydown={console.log('idk')}>
-        <Navbar/>
-    </div>
-{:else if context == "stars"}
-    <div class='app-area'>
-        <Stars/>
-    </div>
-    <div class='nav' on:click={() => changeContext('home')} on:keydown={console.log('idk')}>
-        <Navbar/>
-    </div>
-{:else if context == "dogs"}
-    <div class='app-area'>
-        <Dogs/>
-    </div>
-    <div class='nav' on:click={() => changeContext('home')} on:keydown={console.log('idk')}>
-        <Navbar/>
-    </div>
-{:else if context == "poems"}
-    <div class='app-area'>
-        <Poems/>
-    </div>
-    <div class='nav' on:click={() => changeContext('home')} on:keydown={console.log('idk')}>
-        <Navbar/>
-    </div>
-{:else if context == "books"}
-    <div class='app-area'>
-        <Books/>
-    </div>
-    <div class='nav' on:click={() => changeContext('home')} on:keydown={console.log('idk')}>
-        <Navbar/>
+        {#each appList as app}
+            <div on:click={() => changeContext(app.context)} on:keydown={console.log('idk')}>
+                <App appName={app.name} color={app.color}>
+                    <svelte:component this={app.icon}/>
+                </App>
+            </div>
+        {/each}
     </div>
 {/if}
-
+{#each appList as app}
+    {#if context == app.context}
+        <div class='app-area'>
+            <svelte:component this={app.app}/>
+        </div>
+        <div class='nav' on:click={() => changeContext('home')} on:keydown={console.log('idk')}>
+            <Navbar/>
+        </div>
+    {/if}
+{/each}
 <style>
     .home > div {
         margin-top: 1rem;
