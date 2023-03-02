@@ -5,7 +5,7 @@
     import Loader from '../utils/Loader.svelte';
 
     const configuration = new Configuration({
-    apiKey: import.meta.env.VITE_APIKEY,
+    apiKey: process.env.VITE_APIKEY,
     });
     const openai = new OpenAIApi(configuration);
 
