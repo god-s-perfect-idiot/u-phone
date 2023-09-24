@@ -15,9 +15,10 @@
     }
     
     export let fontSize;
+    export let top;
 </script>
 
-<div class="time" style='font-size: {fontSize}'>
+<div class="time" style='font-size: {fontSize}; margin-top: {top}'>
     {time}
 </div>
 
@@ -26,7 +27,6 @@
         font-weight: bold;
         display: flex;
         justify-content: center;
-        margin-top: 8rem;
         color: white;
     }
 </style>

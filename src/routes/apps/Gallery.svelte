@@ -43,11 +43,11 @@
         border-radius: 1rem;
     }
     .images {
-        margin-top: 5rem;
+        margin-top: 2rem;
         justify-content: center;
         display: flex;
         flex-wrap: wrap;
-        height: 45rem;
+        height: 35rem;
         overflow-y: scroll;
     }
 </style>

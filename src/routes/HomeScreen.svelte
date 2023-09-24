@@ -11,6 +11,7 @@
     import FaDog from 'svelte-icons/fa/FaDog.svelte'
     import FaPenFancy from 'svelte-icons/fa/FaPenFancy.svelte'
     import FaBookReader from 'svelte-icons/fa/FaBookReader.svelte'
+    import FaCog from 'svelte-icons/fa/FaCog.svelte'
     import MdChatBubble from 'svelte-icons/md/MdChatBubble.svelte'
     import MdTimelapse from 'svelte-icons/md/MdTimelapse.svelte'
 
@@ -30,6 +31,7 @@
     import Books from './apps/Books.svelte';
     import Chat from './apps/Chat.svelte';
     import Eleven from './apps/Eleven.svelte';
+    import Settings from './apps/Settings.svelte';
     
     let context = "home";
     let greeting;
@@ -107,40 +109,49 @@
             icon: FaBookReader,
             app: Books
         },
-        {
-            context: 'chat',
-            name: 'Chat with GPT',
-            color: '#283593',
-            icon: MdChatBubble,
-            app: Chat
-        },
+        // {
+        //     context: 'chat',
+        //     name: 'Chat with GPT',
+        //     color: '#283593',
+        //     icon: MdChatBubble,
+        //     app: Chat
+        // },
         {
             context: 'eleven',
             name: 'Time to Eleven',
             color: '#00796B',
             icon: MdTimelapse,
             app: Eleven
-        }
+        }, 
+        // {
+        //     context: 'settings',
+        //     name: 'Settings',
+        //     color: '#2e7d32',
+        //     icon: FaCog,
+        //     app: Settings
+        // }
     ]
     
 </script>
 
 {#if context == "home"}
-    <div class='home'>
-        <Clock fontSize='2.6rem'/>
-        <div>
-            <span>{greeting}</span>
-        </div>
-    </div>
-
-    <div class="applist">
-        {#each appList as app}
-            <div on:click={() => changeContext(app.context)} on:keydown={console.log('idk')}>
-                <App appName={app.name} color={app.color}>
-                    <svelte:component this={app.icon}/>
-                </App>
+    <div class="home-container">
+        <div class='home'>
+            <Clock fontSize='2.6rem' top="3rem"/>
+            <div>
+                <span>{greeting}</span>
             </div>
-        {/each}
+        </div>
+    
+        <div class="applist">
+            {#each appList as app}
+                <div on:click={() => changeContext(app.context)} on:keydown={console.log('idk')}>
+                    <App appName={app.name} color={app.color}>
+                        <svelte:component this={app.icon}/>
+                    </App>
+                </div>
+            {/each}
+        </div>
     </div>
 {/if}
 {#each appList as app}
@@ -154,6 +165,13 @@
     {/if}
 {/each}
 <style>
+    .home-container {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
     .home > div {
         margin-top: 1rem;
         display: flex;
@@ -174,11 +192,13 @@
     .applist {
         display: flex;
         flex-direction: column;
-        height: 31rem;
         background: rgba(255, 255, 255, 0.4);
-        margin-top: 6rem;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
         border-radius: 1.2rem;
         overflow: scroll;
+        height: 30rem;
+        width: 90%;
     }
     .applist::-webkit-scrollbar {
         display: none;

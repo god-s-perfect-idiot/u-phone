@@ -78,7 +78,7 @@
         display: flex;
         align-items: center;
         flex-direction: column;
-        height: 45rem;
+        height: 30rem;
         overflow-y: scroll;
     }
     .main-page {

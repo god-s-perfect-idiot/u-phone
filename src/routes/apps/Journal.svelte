@@ -5,8 +5,16 @@
     const timestamp = `${moment().format('HH:mm A - MMM DD, YYYY')}`
     let view = 'all'
 
-    $: journals = {...localStorage}
-
+    // const oldEntries = localStorage.getItem("journals")
+    const retrievedJournals = localStorage.getItem("journals")
+    let journals = retrievedJournals ? JSON.parse(retrievedJournals) : []
+    $: journals
+    // if(oldEntries) {
+    //     const oldJournals = JSON.parse(oldEntries)
+    //     for(let key in oldJournals) {
+    //         journals.push(oldJournals[key])
+    //     }
+    // }
     let title;
     let content;
     let ts;
@@ -14,14 +22,14 @@
     const readJournal = (key) => {
         document.querySelector('.lister').style.display = 'none'
         document.querySelector('.reader').style.display = 'flex'
-        const entry = JSON.parse(localStorage.getItem(key));
+        const entry = journals[key];
         title = entry.title;
         content = entry.body;
         ts = entry.timestamp;
     }
 
     const closeJournal = () => {
-        document.querySelector('.lister').style.display = 'block'
+        document.querySelector('.lister').style.display = 'flex'
         document.querySelector('.reader').style.display = 'none'
     }
 
@@ -35,14 +43,20 @@
             document.querySelector('.all-js').style.display = 'flex'
             document.querySelector('.j-entry').style.display = 'none'
             view = 'all'
-            localStorage.setItem(new Date(), JSON.stringify({
+            journals = [...journals, {
                 timestamp: timestamp,
-                title: document.getElementById('title').value,
+                title: document.getElementById('title').value || 'Untitled',
                 body: document.getElementById('entry').value,
-            }))
+            }]
+            localStorage.setItem("journals", JSON.stringify(journals))
+            // localStorage.setItem(new Date(), JSON.stringify({
+            //     timestamp: timestamp,
+            //     title: document.getElementById('title').value,
+            //     body: document.getElementById('entry').value,
+            // }))
             document.getElementById('title').value = "";
             document.getElementById('entry').value = "";
-            journals = {...localStorage}
+            // journals = {...localStorage}
         }
     }
 </script>
@@ -51,12 +65,12 @@
     <div class="lister">
         <div class="new"><button on:click={() => switchView()}>New Journal</button></div>
         <div class="j-list">
-            {#each Object.keys(journals) as key}
-                <div class="entry" on:click={() => readJournal(key)} on:keydown={console.log('idk')}>
+            {#each journals as journal, key}
+                <div class="entry" on:click={() => readJournal(key)} on:keydown={undefined}>
                     <div class="title">
-                        {JSON.parse(localStorage.getItem(key)).title}
+                        {journal.title}
                     </div>
-                    <div class="ts">{JSON.parse(localStorage.getItem(key)).timestamp}</div>
+                    <div class="ts">{journal.timestamp}</div>
                 </div>
             {/each}
         </div>
@@ -78,6 +92,12 @@
 </div>
 
 <style>
+    .lister {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
     .close {
         margin-top: 0.1rem;
         margin-right: 0.1rem;
@@ -97,6 +117,7 @@
         display: flex;
         justify-content: center;
         margin-top: 1rem;
+        height: 35rem;
     }
     .j-list {
         display: flex;
@@ -108,7 +129,7 @@
         display: none;
         flex-direction: column;
         width: 20rem;
-        height: 45rem;
+        height: 35rem;
         background-color: rgb(255, 255, 255, 0.5);
         border-radius: 0.6rem;
     }
@@ -145,6 +166,13 @@
     .new {
         margin-top: 1rem;
     }
+    .j-entry {
+        height: 35rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
+        margin-top: 1rem;
+        display: flex;
+    }
     .j-entry input {
         background: transparent;
         width: 20rem;
@@ -176,6 +204,7 @@
     }
     .j-entry > .timestamp {
         align-self: end;
+        color: white;
     }
     .j-entry > .save {
         align-self: end;

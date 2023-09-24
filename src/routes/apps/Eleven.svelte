@@ -40,6 +40,6 @@
         background-size: cover;        
         background-position: center;
         width: 100vw;
-        height: 110vh;
+        height: 100vh;
     }
 </style>

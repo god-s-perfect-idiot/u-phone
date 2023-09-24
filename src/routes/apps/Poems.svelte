@@ -41,7 +41,7 @@
         position: absolute;
         background-color: black;
         width: 100vw;
-        height: 115%;
+        height: 100%;
         top:0;
         left: 0;
     }

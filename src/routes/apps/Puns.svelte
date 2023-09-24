@@ -1,28 +1,26 @@
 <script>
-// @ts-nocheck
+    // @ts-nocheck
     import Loader from '../utils/Loader.svelte';
+    import { getPun } from '../store/puns';
     import {onMount} from 'svelte';
     let quote;
-    let promise;
 
-    const getQuote = async () => {
-        const res = await fetch('https://v2.jokeapi.dev/joke/Pun?type=single');
-        const Quote = await res.json();
-        quote = Quote.joke;
-    }
+    // const getQuote = async () => {
+    //     const res = await fetch('https://v2.jokeapi.dev/joke/Pun?type=single');
+    //     const Quote = await res.json();
+    //     quote = Quote.joke;
+    // }
 
-    onMount(() => {
-        promise = getQuote();
-    })
+    // onMount(() => {
+    //     promise = getQuote();
+    // })
+    quote = getPun();
 </script>
 
-{#await promise}
-    <Loader/>
-{:then} 
-    <div class="quote">
-        {quote}
-    </div>
-{/await}
+
+<div class="quote">
+    {quote}
+</div>
 
 <style>
     .quote {

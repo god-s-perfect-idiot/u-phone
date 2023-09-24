@@ -7,14 +7,15 @@
     let promise;
 
     const getQuote = async () => {
-        const res = await fetch('https://api.api-ninjas.com/v1/quotes?category=happiness', {
+        const res = await fetch('https://api.quotable.io/random', {
+            method: 'GET',
             headers: {
-                'X-Api-Key': 'h2my79uJd/fy85jowvnT/A==pWIKhp3kGl79hCx2'
+                'Content-Type': 'application/json'
             }
         });
         const Quote = await res.json();
-        quote = Quote[0].quote;
-        author = Quote[0].author;
+        quote = Quote.content;
+        author = Quote.author;
     }
 
     onMount(() => {

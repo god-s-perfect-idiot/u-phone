@@ -10,5 +10,6 @@
     .nav-bar {
         height: 2.2rem;
         color: white;
+        margin-left: 2rem;
     }
 </style>

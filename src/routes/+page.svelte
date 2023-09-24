@@ -29,4 +29,7 @@
 	.home {
 		display: none;
 	}
+	.lock {
+		height: 100%;
+	}
 </style>
