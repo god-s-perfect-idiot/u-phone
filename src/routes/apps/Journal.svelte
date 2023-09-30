@@ -63,7 +63,7 @@
 
 <div class="all-js">
     <div class="lister">
-        <div class="new"><button on:click={() => switchView()}>New Journal</button></div>
+        <div class="new"><button on:click={() => switchView()}>new journal</button></div>
         <div class="j-list">
             {#each journals as journal, key}
                 <div class="entry" on:click={() => readJournal(key)} on:keydown={undefined}>
@@ -88,15 +88,16 @@
     <textarea id="entry">
 
     </textarea>
-    <div class="save"><button on:click={() => switchView()}>Save</button></div>
+    <div class="save"><button on:click={() => switchView()}>save</button></div>
 </div>
 
 <style>
     .lister {
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        width: 100%;
+        /* justify-content: center; */
+        /* align-items: center; */
     }
     .close {
         margin-top: 0.1rem;
@@ -116,14 +117,17 @@
     .all-js {
         display: flex;
         justify-content: center;
-        margin-top: 1rem;
-        height: 35rem;
+        height: 100%;
+        width: 100%;
     }
     .j-list {
         display: flex;
         flex-direction: column;
         overflow-y: scroll;
-        height: 45rem;
+        height: 100%;
+        width: 100%;
+        gap: 1rem;
+        margin-top: 2rem;
     }
     .reader {
         display: none;
@@ -153,11 +157,13 @@
         word-wrap: break-word;
     }
     .entry {
-        margin-top: 1rem;
-        width: 20rem;
-        background-color: rgba(255, 255, 255, 0.5);
-        padding: 1rem;
-        border-radius: 0.6rem;
+        /* margin-top: 2rem; */
+        margin-left: 2rem;
+        /* border: 2px solid black; */
+        width: 80%;
+        /* background-color: rgba(255, 255, 255, 0.5); */
+        /* padding: 1rem; */
+        /* border-radius: 0.6rem; */
     }
     .title {
         font-size: 1.2rem;
@@ -165,46 +171,44 @@
     }
     .new {
         margin-top: 1rem;
+        margin-left: 2rem;
     }
     .j-entry {
-        height: 35rem;
-        margin-left: 1rem;
+        height: 100%;
+        margin-left: 2rem;
         margin-right: 1rem;
         margin-top: 1rem;
         display: flex;
     }
     .j-entry input {
         background: transparent;
-        width: 20rem;
+        width: 90%;
         margin-top: 2rem;
         border: none;
-        border-bottom: 1px solid white;
+        border: 2px solid black;
         font-size: 1.2rem;
-        color: white;
+        padding: 0.2rem;
+        padding-left: 1rem;
+        color: black;
         height: 2rem;
     }
     .j-entry input::placeholder {
-        color: white
+        color: black;
     }
     .j-entry textarea {
-        width: 20rem;
-        height: 35rem;
+        width: 94%;
+        height: 100%;
         margin-top: 2rem;
-        border-radius: 0.3rem;
         background: transparent;
-        border: 1px solid white;
+        border: 2px solid black;
         font-size: 1.2rem;
-        color: white;
+        color: black;
     }
     .j-entry {
         display: none;
-        justify-content: center;
-        align-items: center;
+        /* justify-content: center; */
+        /* align-items: center; */
         flex-direction: column;
-    }
-    .j-entry > .timestamp {
-        align-self: end;
-        color: white;
     }
     .j-entry > .save {
         align-self: end;
@@ -212,23 +216,24 @@
     .timestamp {
         font-size: 1.2rem;
         color: black;
-        font-weight: bold;
-        text-align: right;
+        /* font-weight: bold; */
+        /* text-align: right; */
     }
     .save {
         margin-top: 2rem;
+        margin-right: 1rem;
     }
     button {
         transition: all .5s ease;
-        color: #fff;
-        border: 1px solid white;
+        color: black;
+        border: 2px solid black;
         text-align: center;
         line-height: 1;
         font-size: 17px;
         background-color : transparent;
         padding: 10px;
         outline: none;
-        border-radius: 4px;
+        /* border-radius: 4px; */
     }
     button:hover {
         color: #001F3F;

@@ -9,13 +9,13 @@
 <style>
 
 .container {
-    height: 100vh;
+    height: 100%;
     width: 100vw;
   display: flex;
-  position: absolute;
-  left: 0;
-  top: 0;
-  background: linear-gradient(to bottom, #020107 0%, #201b46 100%);
+  /* position: absolute; */
+  /* left: 0;
+  top: 0; */
+  /* background: linear-gradient(to bottom, #020107 0%, #201b46 100%); */
 }
 .stars {
   z-index: 10;

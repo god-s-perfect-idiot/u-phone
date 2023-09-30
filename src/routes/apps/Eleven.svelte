@@ -25,7 +25,7 @@
 
 <style>
     div {
-        position: absolute;
+        /* position: absolute; */
         left:0;
         top: 0;
         display: flex;
@@ -35,11 +35,7 @@
         justify-content: center;
         align-items: center;
         text-align: center;
-        background-image: url('./images/eleven-bg.png');
-        background-repeat: no-repeat;
-        background-size: cover;        
-        background-position: center;
         width: 100vw;
-        height: 100vh;
+        height: 100%;
     }
 </style>

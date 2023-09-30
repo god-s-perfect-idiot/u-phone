@@ -32,6 +32,7 @@
     import Chat from './apps/Chat.svelte';
     import Eleven from './apps/Eleven.svelte';
     import Settings from './apps/Settings.svelte';
+  import { getTheme } from './store/themer';
     
     let context = "home";
     let greeting;
@@ -45,99 +46,128 @@
         context = newContext;
     }
 
+    // const mainColor = localStorage.getItem('main') || 'mango';
+    // const accent = localStorage.getItem('accent') || 'kavi';
+
+    const mainColor = getTheme('main') || 'mango';
+    const accent = getTheme('accent') || 'kavi';
+
     const appList = [
         {
             context: 'quote',
             name: 'A Quote a day',
             color: '#e53935',
             icon: FaQuoteRight,
-            app: Quotes
+            app: Quotes,
+            customTheme: true
         },
         {
             context: 'gallery',
             name: 'Snaps from the past',
+            showTitle: 'you+me',
             color: '#1e88e5',
             icon: MdPhotoAlbum,
-            app: Gallery
+            app: Gallery,
+            customTheme: true
         },
         {
             context: 'jokes',
             name: 'Have a Laugh',
             color: '#00897b',
             icon: FaRegLaughSquint,
-            app: Jokes
+            app: Jokes,
+            customTheme: true
         },
         {
             context: 'puns',
             name: 'Tearable Puns',
             color: '#f4511e',
             icon: FaSadTear,
-            app: Puns
+            app: Puns,
+            customTheme: true
         },
         {
             context: 'journal',
             name: 'A Penny for your Thoughts',
+            showTitle: "Uno's Journal",
             color: '#01579b',
             icon: FaJournalWhills,
-            app: Journal
+            app: Journal,
+            customTheme: true
         },
         {
             context: 'stars',
             name: 'Make a Wish',
             color: '#3949ab',
             icon: FaBraille,
-            app: Stars
+            app: Stars,
+            customTheme: false,
+            theme: {
+                text: 'white',
+                bg: 'star-bg'
+            }
         },
         {
             context: 'dogs',
             name: 'Good Pupper',
             color: '#c2185b',
             icon: FaDog,
-            app: Dogs
+            app: Dogs,
+            customTheme: false,
+            theme: {
+                text: 'white',
+                bg: 'black-bg'
+            }
         },
         {
             context: 'poems',
             name: 'Mightier Pen',
             color: '#006064',
             icon: FaPenFancy,
-            app: Poems
+            app: Poems,
+            customTheme: false,
+            theme: {
+                text: 'white',
+                bg: 'black-bg'
+            }
         },
         {
             context: 'books',
             name: 'A Good Book',
             color: '#bf360c',
             icon: FaBookReader,
-            app: Books
+            app: Books,
+            customTheme: true
         },
-        // {
-        //     context: 'chat',
-        //     name: 'Chat with GPT',
-        //     color: '#283593',
-        //     icon: MdChatBubble,
-        //     app: Chat
-        // },
         {
             context: 'eleven',
             name: 'Time to Eleven',
             color: '#00796B',
             icon: MdTimelapse,
-            app: Eleven
+            app: Eleven,
+            customTheme: false,
+            theme: {
+                text: 'white',
+                bg: 'eleven-bg'
+            }
         }, 
-        // {
-        //     context: 'settings',
-        //     name: 'Settings',
-        //     color: '#2e7d32',
-        //     icon: FaCog,
-        //     app: Settings
-        // }
-    ]
+        {
+            context: 'settings',
+            name: 'Settings',
+            color: '#2e7d32',
+            icon: FaCog,
+            app: Settings,
+            customTheme: true
+        }
+    ];
+
     
 </script>
 
 {#if context == "home"}
     <div class="home-container">
         <div class='home'>
-            <Clock fontSize='2.6rem' top="3rem"/>
+            <Clock fontSize='3rem' top="3rem"/>
             <div>
                 <span>{greeting}</span>
             </div>
@@ -156,48 +186,68 @@
 {/if}
 {#each appList as app}
     {#if context == app.context}
-        <div class='app-area'>
-            <svelte:component this={app.app}/>
-        </div>
-        <div class='nav' on:click={() => changeContext('home')} on:keydown={console.log('idk')}>
-            <Navbar/>
+        <div class="app {!app.customTheme ? app.theme.bg : ""}">
+            <div class='app-title'>
+                <span class={!app.customTheme ? app.theme.text : ""}>{app.showTitle || app.name}</span>
+            </div>
+            <div class='app-area'>
+                <svelte:component this={app.app}/>
+            </div>
+            <div class='nav {!app.customTheme ? app.theme.text : ""}' on:click={() => changeContext('home')} on:keydown={console.log('idk')}>
+                <Navbar/>
+            </div>
         </div>
     {/if}
 {/each}
 <style>
+    .app {
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+    .app-title {
+        height: 15%;
+        /* padding-top: 2rem; */
+        font-size: 2.5rem;
+        text-transform: lowercase;
+        display: flex;
+    }
+    .app-title > span {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        padding-left: 2rem;
+        /* padding-top: 2rem; */
+    }
+    .app-area {
+        height: 75%;
+    }
     .home-container {
         height: 100%;
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        align-items: center;
+        margin-left: 2rem;
     }
     .home > div {
-        margin-top: 1rem;
+        margin-top: 0.5rem;
         display: flex;
-        justify-content: center;
     }
     .home span {
-        color: white;
-        font-size: 1.2rem;
-        font-weight: bold;
+        font-size: 1.4rem;
     }
     .nav {
-        position: fixed;
-        bottom: 0;
+        height: 10%;
         display: flex;
         align-self: center;
-        margin-bottom: 1.5rem;
+        justify-content: center;
     }
     .applist {
         display: flex;
         flex-direction: column;
-        background: rgba(255, 255, 255, 0.4);
         margin-top: 2rem;
         margin-bottom: 1rem;
-        border-radius: 1.2rem;
         overflow: scroll;
-        height: 30rem;
+        height: 28rem;
         width: 90%;
     }
     .applist::-webkit-scrollbar {

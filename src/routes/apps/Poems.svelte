@@ -31,14 +31,14 @@
             {poem}
         </div>
         <div class="author">
-            -{author}
+            {author}
         </div>
     </div>
 {/await}
 
 <style>
     .bg {
-        position: absolute;
+        /* position: absolute; */
         background-color: black;
         width: 100vw;
         height: 100%;
@@ -48,7 +48,6 @@
     .title {     
         color: white;
         font-size: 1.3rem;
-        margin-top: 2rem;
         margin-left: 2rem;
         margin-right: 2rem;
     }
@@ -60,7 +59,7 @@
         margin-right: 2rem;
         display: flex;
         overflow: scroll;
-        height: 60%;
+        height: 70%;
     }
     .author {     
         color: white;

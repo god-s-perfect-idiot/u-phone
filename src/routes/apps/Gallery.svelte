@@ -40,14 +40,14 @@
         width: 100%; /* or any custom size */
         height: 100%; 
         object-fit: cover;
-        border-radius: 1rem;
+        /* border-radius: 1rem; */
     }
     .images {
-        margin-top: 2rem;
+        /* padding-top: 2rem; */
         justify-content: center;
         display: flex;
         flex-wrap: wrap;
-        height: 35rem;
+        height: 100%;
         overflow-y: scroll;
     }
 </style>

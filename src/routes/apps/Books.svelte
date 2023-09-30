@@ -16,7 +16,7 @@
     
 <div class="main-page">
     <div class="search">
-        <input type="text" id="src-inp" placeholder="Search for a book, Uno"/>
+        <input type="text" id="src-inp" placeholder="search for a book, Uno"/>
         <div class="src-btn" on:click={() => promise = searchBook()} on:keydown={console.log('idk')}>
             <IoIosSearch></IoIosSearch>
         </div>
@@ -36,7 +36,7 @@
                 {/each}
             {:else}
                 <div class="no-book">
-                    Search for a book
+                    search for a book
                 </div>
             {/if}
         </div>
@@ -48,63 +48,51 @@
         font-size: 1.3rem;
         display: flex;
         height: 100%;
-        justify-content: center;
-        align-items: center;
-        font-weight: bold;
-        color: white;
     }
     .results span {
-        margin-left: 2rem;
         height: 1.5rem;
         overflow: hidden;
     }
-    .results .title {
-        margin-top: 1rem;
-    }
-    .results .year {
-        margin-bottom: 1rem;
-    }
     .results > .book-meta {
         display: flex;
-        width: 20rem;
-        height: 8rem;
-        background-color: rgb(255, 255, 255, 0.5);
-        border-radius: 0.7rem;
-        margin-top: 1rem;
         flex-direction: column;
+    }
+    .book-meta > .title {
+        font-size: 1.2rem;
     }
     .results {
         margin-top: 2rem;
+        gap: 1rem;
         display: flex;
-        align-items: center;
         flex-direction: column;
-        height: 30rem;
+        height: 100%;
         overflow-y: scroll;
     }
     .main-page {
         display: flex;
         flex-direction: column;
+        margin-left: 2rem;
+        margin-right: 2rem;
+        height: 100%;
     }
     .src-btn {
         width: 2rem;
         height: 2rem;
-        border: 1px solid black;
-        border-radius: 0.4rem;
-        margin-left: 2rem;
+        border: 2px solid black;
+        margin-left: 1rem;
     }
     .search {
         display: flex;
-        justify-content: center;
-        margin-top: 2rem;
     }
     .search input {
-        width: 15rem;
+        width:70%;
         height: 2rem;
         background: none;
         border: none;
         font-size: 1rem;
         color: black;
-        border-bottom: 1px solid black;
+        border: 2px solid black;
+        padding-left: 2rem;
     }
     .search input::placeholder {
         color: black;

@@ -24,7 +24,6 @@
 
 <style>
     .quote {
-        color: white;
         font-size: 1.3rem;
         margin-top: 10rem;
         margin-left: 2rem;

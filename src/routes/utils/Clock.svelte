@@ -18,15 +18,13 @@
     export let top;
 </script>
 
-<div class="time" style='font-size: {fontSize}; margin-top: {top}'>
+<div class="time black" style='font-size: {fontSize}; margin-top: {top}'>
     {time}
 </div>
 
 <style>
     .time {
-        font-weight: bold;
         display: flex;
-        justify-content: center;
-        color: white;
+        font-weight: 300;
     }
 </style>

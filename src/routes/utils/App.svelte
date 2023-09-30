@@ -18,8 +18,8 @@ export let color;
 
 <style>
     .app {
-        margin-left: 2rem;
-        margin-top: 1rem;
+        /* margin-left: 2rem; */
+        /* margin-top: 1rem; */
         height: 4rem;
         display: flex;
         align-items: center;
@@ -30,7 +30,7 @@ export let color;
         display: flex;
         justify-content: center;
         align-items: center;
-        border-radius: 1rem;
+        /* border-radius: 1rem; */
     }
     .icon {
         width: 1.5rem;
@@ -43,7 +43,7 @@ export let color;
         justify-content: center;
         align-items: center;
         margin-left: 1rem;
+        font-size: 1.2rem;
         height: 100%;
-        font-weight: bold;
     }
 </style>

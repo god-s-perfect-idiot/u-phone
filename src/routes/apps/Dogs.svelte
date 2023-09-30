@@ -21,28 +21,32 @@
   {#await promise}
       <Loader/>
   {:then} 
-  {console.log(img)}
-    <div class="bg" style="background-image:url({img})">
-      <div class="quote">
+    
+    <div class="bg dim" style="background-image:url({img})">
+      <div class="quote remove-dim">
         {quote}
-    </div>
+      </div>
     </div>
   {/await}
   
   <style>
     .bg {
-      position: absolute;
+      /* position: absolute; */
       width: 100vw;
-      height: 100vh;
-      left: 0;
-      top: 0;
-      background-size: cover;
+      height: 100%;
+      background-size: cover; 
+    }
+    .dim>* {
+      filter: brightness(0.5);
+    }
+    .remove-dim {
+      filter: brightness(1);
     }
     .quote {
         color: white;
-        font-weight: bold;
+        /* font-weight: bold; */
         font-size: 1.3rem;
-        margin-top: 10rem;
+        padding-top: 10rem;
         margin-left: 2rem;
         margin-right: 2rem;
     }

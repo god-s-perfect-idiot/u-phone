@@ -3,6 +3,9 @@
 
 	import HomeScreen from './HomeScreen.svelte';
     import Lockscreen from './Lockscreen.svelte';
+	import { onMount } from 'svelte';
+	import { initTheme } from './store/themer';
+  import Toast from './fragments/ Toast.svelte';
 
 	const passMsg = (event) => {
 		if(event.detail.text === 'passed!') {
@@ -11,17 +14,22 @@
 		}
 	}
 
+	onMount(() => {
+		initTheme();
+	});
+
 </script>
 
 <svelte:head>
 	<title>Uno Phone</title>
 	<meta name="description" content="Uno Phone" />
 </svelte:head>
-
+  
+<Toast/>
 <div class="home">
 	<HomeScreen/>
 </div>
-<div class="lock">
+<div class="lock black">
 	<Lockscreen on:message={passMsg}/>
 </div>
 

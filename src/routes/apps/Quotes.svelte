@@ -36,14 +36,14 @@
 
 <style>
     .quote {
-        color: white;
+        /* color: white; */
         font-size: 1.3rem;
         margin-top: 10rem;
         margin-left: 2rem;
         margin-right: 2rem;
     }
     .author {     
-        color: white;
+        /* color: white; */
         font-size: 1.3rem;
         margin-top: 2rem;
         margin-left: 2rem;

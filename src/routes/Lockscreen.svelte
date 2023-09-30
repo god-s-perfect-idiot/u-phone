@@ -27,12 +27,12 @@
 </script>
 
 <div class='lock'>
-    <Clock fontSize='4rem' top="6rem"/>
+    <Clock fontSize='3rem' top="6rem"/>
 
+    <span class="er-text">
+        {errorMessage}
+    </span>
     <div class='password'>
-        <span class="er-text">
-            {errorMessage}
-        </span>
         <span class='pb' 
             on:click={() => passGrid = true}  
             on:keydown={undefined}
@@ -67,8 +67,17 @@
                 on:keydown={undefined}
                 on:keyup={undefined}
                 on:keypress={undefined}
-            >Clear</span>
-            <span class="hide">Hide</span>
+            >clear</span>
+            <span class="hide"
+                on:click={() => {
+                    passGrid = false
+                    passwordPlaceholder = ""
+                    password = ""
+                }}
+                on:keydown={undefined}
+                on:keyup={undefined}
+                on:keypress={undefined}
+            >hide</span>
         </div>
     {/if}
 </div>
@@ -78,40 +87,29 @@
     .password-controls {
         display: flex;
         justify-content: space-between;
-        width: 70%;
-        margin-left: 2rem;
-        margin-right: 2rem;
-        font-size: 1.3rem;
-        color: white;
+        width: 100%;
+        font-size: 1.8rem;
+        margin-top: 1rem;
     }
     .password-grid {
-        margin-top: 3rem;
-        margin-left: 2rem;
-        margin-right: 2rem;
+        margin-top: 2rem;
         justify-content: center;
         display: flex;
         flex-direction: 
         row;
         flex-wrap: wrap;
-        gap: 1.5rem 3.4rem;
+        gap: 2rem 6rem;
     }
     .password-grid > span {
-        font-size: 1.4rem;
-        color: white;
-        height: 3rem;
-        width: 3rem;
-        background-color: rgba(0, 0, 0, 0.41);
-        border-radius: 2rem;
+        font-size: 1.8rem;
         display: flex;
         justify-content: center;
         align-items: center;
     }
     .er-text {
-        color: white;
-        font-size: 1.2rem;
-        font-weight: bold;
-        margin-left: 2rem;
-        margin-right: 2rem;
+        font-size: 1.4rem;
+        margin-top:1rem;
+        font-weight: 300;
     }
     .unlocker {
         margin-top: 10rem;
@@ -128,13 +126,11 @@
     }
     .pb {
         background: transparent;
-        width: 15rem;
+        width: 100%;
         margin-top: 1rem;
         height: 2rem;
         padding-left: 1rem;
-        border: 1px solid white;
-        color: white;
-        border-radius: 3rem;
+        border-bottom: 2px solid black;
         text-align: center;
         font-size: 2.3rem;
         display: flex;
@@ -142,13 +138,13 @@
         justify-content: center;
     }
     .password > span {
-        color: white;
         font-weight: bold;
     }
     .lock {
         display: flex;
-        align-items: center;
         flex-direction: column;
+        margin-left:3rem;
+        margin-right:3rem;
     }
     
 </style>

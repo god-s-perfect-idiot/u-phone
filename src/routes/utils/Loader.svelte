@@ -14,7 +14,7 @@
 .loader {
         width: 48px;
         height: 48px;
-        border: 5px solid #FFF;
+        border: 5px solid #000;
         border-radius: 50%;
         display: inline-block;
         box-sizing: border-box;
@@ -26,7 +26,7 @@
         position: absolute;
         width: 48px;
         height: 48px;
-        border: 5px solid #FFF;
+        border: 5px solid #000;
         border-radius: 50%;
         display: inline-block;
         box-sizing: border-box;
